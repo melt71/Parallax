@@ -15,427 +15,173 @@ const CyberFiction = () => {
     // Inject CSS styles
     const style = document.createElement('style');
     style.textContent = `
-      /* ========================================
-         CSS CUSTOM PROPERTIES (Mobile-First)
-         ======================================== */
-      :root {
-        --nav-height: 60px;
-        --nav-padding: 1rem;
-        --page-padding: 5%;
-        --loop-font-size: clamp(1.5rem, 8vw, 6.25rem);
-        --h1-font-size: clamp(1.75rem, 6vw, 3.125rem);
-        --h2-font-size: clamp(1.5rem, 5vw, 3.75rem);
-        --h3-font-size: clamp(0.875rem, 2.5vw, 1.375rem);
-        --p-font-size: clamp(0.875rem, 2vw, 1rem);
-        --button-padding: 0.625rem 1rem;
-        --gap-small: 0.5rem;
-        --gap-medium: 1rem;
-        --gap-large: 2rem;
-      }
-
-      /* ========================================
-         BASE STYLES (Mobile-First)
-         ======================================== */
       * {
-        margin: 0;
-        padding: 0;
+        margin: 0%;
+        padding: 0%;
         box-sizing: border-box;
-        font-family: gilroy, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-family: gilroy;
       }
-
       html, body {
         height: 100%;
         width: 100%;
-        overflow-x: hidden;
       }
-
       #main {
         position: relative;
         overflow: hidden;
       }
-
       #page, #page1, #page2, #page3 {
         position: relative;
-        min-height: 100vh;
+        height: 100vh;
         width: 100vw;
         background-color: #f1f1f1;
-        overflow: hidden;
       }
-
       canvas {
         position: relative;
         z-index: 9;
-        width: 100vw !important;
-        height: 100vh !important;
         max-width: 100vw;
         max-height: 100vh;
-        object-fit: cover;
       }
-
-      /* ========================================
-         NAVIGATION (Mobile-First)
-         ======================================== */
-      #nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: var(--nav-height);
-        width: 100%;
-        position: fixed;
-        z-index: 99;
-        padding: 0 var(--nav-padding);
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(7px);
-        -webkit-backdrop-filter: blur(7px);
-        border-radius: 0;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 
-          0 8px 32px rgba(0, 0, 0, 0.1),
-          inset 0 1px 0 rgba(255, 255, 255, 0.5),
-          inset 0 -1px 0 rgba(255, 255, 255, 0.1);
-      }
-
-      #nav > h3 {
-        font-family: gilroy;
-        font-weight: 400;
-        font-size: clamp(1rem, 4vw, 1.375rem);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      #nav > button {
-        padding: var(--button-padding);
-        border-radius: 50px;
-        background-color: #000;
-        color: #fff;
-        border: none;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: var(--gap-small);
-        font-size: clamp(0.75rem, 2vw, 0.875rem);
-        white-space: nowrap;
-        min-height: 44px;
-        cursor: pointer;
-        transition: transform 0.2s ease;
-      }
-
-      #nav > button:active {
-        transform: scale(0.95);
-      }
-
-      #nav > button svg {
-        width: clamp(14px, 3vw, 20px);
-        height: clamp(14px, 3vw, 20px);
-      }
-
-      #nav > button span {
-        display: none;
-      }
-
-      /* ========================================
-         SCROLLING TEXT LOOP (Mobile-First)
-         ======================================== */
       #loop {
         display: flex;
         position: absolute;
-        top: 25%;
-        height: auto;
+        top: 30%;
+        height: 25%;
         width: 100%;
-        font-size: var(--loop-font-size);
+        font-size: 100px;
         white-space: nowrap;
         font-family: gilroy;
-        overflow: hidden;
       }
-
       #loop > h1 {
         font-weight: 400;
-        animation: anim 20s linear infinite;
-        padding-right: 2rem;
+        animation-name: anim;
+        animation-duration: 15s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
       }
-
       #loop > h1 > span {
-        -webkit-text-stroke: clamp(0.5px, 0.15vw, 1.2px) #000;
+        -webkit-text-stroke: 1.2px #000;
         color: transparent;
         font-weight: 500;
       }
-
       @keyframes anim {
         0% { transform: translateX(0%); }
         100% { transform: translateX(-100%); }
       }
+      #nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 8%;
+        width: 100%;
+        position: fixed;
+        z-index: 99;
+        padding: 0px 30px;
+    background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  border-radius: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 0px 0px rgba(255, 255, 255, 0);
+      }
+      #nav > h3 {
+        font-family: gilroy;
+        font-weight: 400;
+        font-size: 22px;
+      }
+#nav > button {
+  padding: 10px 20px;
+  border-radius: 50px;
+  background-color: #000;
+  color: #fff;
+  border: none;
 
-      /* ========================================
-         PAGE CONTENT (Mobile-First)
-         ======================================== */
+  display: inline-flex;       /* put icon + text in a row */
+  align-items: center;        /* vertical centering */
+  justify-content: center;    /* horizontal centering */
+  gap: 8px;                   /* space between icon and text */
+}
+
       #page > h3 {
         position: absolute;
-        top: 52%;
-        left: var(--page-padding);
-        right: var(--page-padding);
+        margin-top: 40px;
         font-family: gilroy;
         font-weight: 400;
         color: #7c7c7c;
-        font-size: var(--h3-font-size);
-        line-height: 1.4;
-        text-align: center;
+        left: 5%;
       }
-
-      #page > h3 br {
-        display: none;
-      }
-
       #page > h4 {
         position: absolute;
-        top: 65%;
-        left: 50%;
-        transform: translateX(-50%);
+        margin-top: 50px;
+        left: 25%;
         font-family: gilroy;
         font-weight: 500;
-        font-size: clamp(0.75rem, 2vw, 1rem);
-        text-align: center;
-        white-space: nowrap;
       }
-
-      /* ========================================
-         PAGE 1 CONTENT (Mobile-First)
-         ======================================== */
       #page1 > #right-text {
         position: absolute;
-        top: 20%;
-        left: var(--page-padding);
-        right: var(--page-padding);
+        top: 30%;
+        left: 10%;
       }
-
       #page1 > #right-text > h3 {
         font-weight: 400;
         color: #7c7c7c;
-        font-size: var(--h3-font-size);
-        margin-bottom: 1rem;
       }
-
       #page1 > #right-text > h1 {
-        line-height: 1.3;
-        font-size: var(--h1-font-size);
+        line-height: 1.5;
+        font-size: 50px;
       }
-
       #page1 > #left-text {
         position: absolute;
-        top: 55%;
-        left: var(--page-padding);
-        right: var(--page-padding);
-        text-align: left;
+        top: 50%;
+        right: 10%;
+        text-align: end;
       }
-
       #page1 > #left-text > h1 {
-        font-size: var(--h1-font-size);
-        line-height: 1.3;
-        margin-bottom: 1rem;
+        font-size: 50px;
+        line-height: 1.5;
       }
-
       #page1 > #left-text > h3 {
         color: #7c7c7c;
         font-weight: 400;
-        font-size: var(--h3-font-size);
       }
-
-      /* ========================================
-         PAGE 2 CONTENT (Mobile-First)
-         ======================================== */
       #page2 > #text1 {
         position: absolute;
-        top: 20%;
-        left: var(--page-padding);
-        right: var(--page-padding);
+        top: 30%;
+        left: 10%;
       }
-
       #page2 > #text1 > h3 {
         color: #7c7c7c;
         font-weight: 400;
-        font-size: var(--h3-font-size);
-        margin-bottom: 1rem;
       }
-
       #page2 > #text1 > h1 {
-        font-size: var(--h2-font-size);
-        line-height: 1.3;
+        font-size: 60px;
+        line-height: 1.5;
       }
-
       #page2 > #text2 {
         position: absolute;
         top: 55%;
-        left: var(--page-padding);
-        right: var(--page-padding);
-        text-align: left;
+        right: 10%;
+        text-align: end;
       }
-
       #page2 > #text2 > p {
         color: #7c7c7c;
         font-weight: 400;
-        font-size: var(--p-font-size);
-        line-height: 1.6;
       }
-
-      #page2 > #text2 > p br {
-        display: none;
-      }
-
-      /* ========================================
-         PAGE 3 CONTENT (Mobile-First)
-         ======================================== */
       #page3 > #text3 {
         position: absolute;
-        top: 35%;
-        left: var(--page-padding);
-        right: var(--page-padding);
-        text-align: left;
+        top: 40%;
+        right: 10%;
+        text-align: end;
       }
-
       #page3 > #text3 > h3 {
         color: #7c7c7c;
         font-weight: 400;
-        font-size: var(--h3-font-size);
-        margin-bottom: 1rem;
       }
-
       #page3 > #text3 > h1 {
-        font-size: var(--h2-font-size);
-        line-height: 1.2;
-      }
-
-      /* ========================================
-         TABLET BREAKPOINT (768px+)
-         ======================================== */
-      @media (min-width: 768px) {
-        :root {
-          --nav-height: 70px;
-          --nav-padding: 1.5rem;
-          --page-padding: 8%;
-        }
-
-        #nav > button span {
-          display: inline;
-        }
-
-        #loop {
-          top: 28%;
-        }
-
-        #loop > h1 {
-          animation-duration: 15s;
-        }
-
-        #page > h3 {
-          top: 55%;
-          text-align: left;
-        }
-
-        #page > h3 br {
-          display: inline;
-        }
-
-        #page > h4 {
-          top: 62%;
-          left: 25%;
-          transform: translateX(0);
-        }
-
-        #page1 > #right-text {
-          top: 25%;
-          left: 10%;
-          right: auto;
-        }
-
-        #page1 > #left-text {
-          top: 50%;
-          left: auto;
-          right: 10%;
-          text-align: right;
-        }
-
-        #page2 > #text1 {
-          top: 25%;
-          left: 10%;
-          right: auto;
-        }
-
-        #page2 > #text2 {
-          top: 55%;
-          left: auto;
-          right: 10%;
-          text-align: right;
-        }
-
-        #page2 > #text2 > p br {
-          display: inline;
-        }
-
-        #page3 > #text3 {
-          top: 38%;
-          left: auto;
-          right: 10%;
-          text-align: right;
-        }
-      }
-
-      /* ========================================
-         DESKTOP BREAKPOINT (1024px+)
-         ======================================== */
-      @media (min-width: 1024px) {
-        :root {
-          --nav-height: 80px;
-          --nav-padding: 2rem;
-          --page-padding: 10%;
-        }
-
-        #loop {
-          top: 30%;
-        }
-
-        #page1 > #right-text {
-          top: 30%;
-        }
-
-        #page2 > #text1 {
-          top: 30%;
-        }
-
-        #page3 > #text3 {
-          top: 40%;
-        }
-      }
-
-      /* ========================================
-         LARGE DESKTOP BREAKPOINT (1440px+)
-         ======================================== */
-      @media (min-width: 1440px) {
-        :root {
-          --nav-padding: 2.5rem;
-        }
-      }
-
-      /* ========================================
-         PERFORMANCE OPTIMIZATIONS
-         ======================================== */
-      @media (prefers-reduced-motion: reduce) {
-        #loop > h1 {
-          animation: none;
-        }
-        
-        * {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
-      }
-
-      /* Touch device optimizations */
-      @media (hover: none) and (pointer: coarse) {
-        #nav > button {
-          min-height: 48px;
-          padding: 0.75rem 1.25rem;
-        }
+        font-size: 70px;
       }
     `;
     document.head.appendChild(style);
